@@ -15,16 +15,14 @@
 <body class="bg-slate-50 text-slate-800 font-['Plus_Jakarta_Sans',sans-serif]">
 
     <!-- Navbar -->
-    <nav class="bg-emerald-900 text-white sticky top-0 z-50 shadow-lg">
+    <nav class="bg-brand text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="bg-amber-500 text-emerald-950 p-2.5 rounded-xl font-bold text-xl shadow">
-                        <i class="fa-solid fa-mosque"></i>
-                    </div>
+                    <img src="img/logo.png" alt="Logo Majelis" class="w-12 h-12 object-contain rounded-lg" onerror="this.onerror=null; this.src='https://via.placeholder.com/50/078B4F/FFFFFF?text=Logo';">
                     <div>
                         <span class="text-xl font-bold tracking-wide block font-['Amiri']">Majelis Al Husein</span>
-                        <span class="text-xs text-emerald-200 tracking-wider">Pusat Dakwah & Pembinaan Umat</span>
+                        <span class="text-xs text-emerald-100 tracking-wider">Pusat Dakwah & Pembinaan Umat</span>
                     </div>
                 </div>
                 <!-- Desktop Menu -->
@@ -45,7 +43,7 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-emerald-950 px-4 pt-2 pb-6 space-y-3 border-t border-emerald-800">
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark px-4 pt-2 pb-6 space-y-3 border-t border-emerald-600">
             <a href="#beranda" class="block py-2 hover:text-amber-400">Beranda</a>
             <a href="#tentang" class="block py-2 hover:text-amber-400">Tentang</a>
             <a href="#jadwal" class="block py-2 hover:text-amber-400">Jadwal Kajian</a>
@@ -56,7 +54,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="beranda" class="relative bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-900 text-white py-24 md:py-32 overflow-hidden">
+    <header id="beranda" class="relative bg-gradient-to-r from-emerald-950 via-[#078B4F] to-emerald-900 text-white py-24 md:py-32 overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d1fae5_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 tracking-wide">
@@ -69,10 +67,10 @@
                 Wahana silaturahim, menuntut ilmu syar'i, dan melantunkan dzikir serta sholawat untuk menggapai keridhaan Allah SWT.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#jadwal" class="bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                <a href="#jadwal" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-calendar-days mr-2"></i> Lihat Jadwal Kajian
                 </a>
-                <a href="#donasi" class="bg-emerald-800 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl border border-emerald-600 shadow-lg transition">
+                <a href="#donasi" class="bg-brand-dark hover:bg-emerald-800 text-white font-bold px-8 py-3.5 rounded-xl border border-emerald-500 shadow-lg transition">
                     <i class="fa-solid fa-hand-holding-dollar mr-2"></i> Infaq & Sedekah
                 </a>
             </div>
@@ -80,7 +78,7 @@
     </header>
 
     <!-- Statistik Singkat -->
-    <section class="bg-amber-500 text-emerald-950 py-8 shadow-inner">
+    <section class="bg-amber-500 text-slate-900 py-8 shadow-inner">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div class="p-4">
                 <div class="text-3xl md:text-4xl font-extrabold mb-1">5+</div>
@@ -106,8 +104,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <span class="text-emerald-700 font-bold uppercase tracking-wider text-sm">Tentang Majelis</span>
-                    <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-emerald-950 mt-2 mb-6">
+                    <span class="text-brand font-bold uppercase tracking-wider text-sm">Tentang Majelis</span>
+                    <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-slate-900 mt-2 mb-6">
                         Membangun Generasi Rabbani yang Berilmu & Berakhlak Mulia
                     </h2>
                     <p class="text-slate-600 mb-4 leading-relaxed">
@@ -117,27 +115,21 @@
                         Kami berkomitmen untuk menebarkan dakwah Islam yang rahmatan lil 'alamin dengan berpegang teguh pada manhaj Ahlus Sunnah wal Jama'ah.
                     </p>
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                            <i class="fa-solid fa-book-quran text-emerald-800 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-emerald-950">Kajian Kitab</h4>
+                        <div class="p-4 rounded-xl border border-emerald-100" style="background-color: #e6f3ed;">
+                            <i class="fa-solid fa-book-quran text-brand text-2xl mb-2"></i>
+                            <h4 class="font-bold text-slate-900">Kajian Kitab</h4>
                             <p class="text-xs text-slate-600 mt-1">Pembelajaran tafsir, fiqih, dan tasawuf rutin.</p>
                         </div>
-                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                            <i class="fa-solid fa-hands-praying text-emerald-800 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-emerald-950">Majelis Dzikir</h4>
+                        <div class="p-4 rounded-xl border border-emerald-100" style="background-color: #e6f3ed;">
+                            <i class="fa-solid fa-hands-praying text-brand text-2xl mb-2"></i>
+                            <h4 class="font-bold text-slate-900">Majelis Dzikir</h4>
                             <p class="text-xs text-slate-600 mt-1">Sholawat Nabi dan doa bersama untuk umat.</p>
                         </div>
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="bg-emerald-900 rounded-3xl p-2 shadow-2xl overflow-hidden">
-                        <div class="bg-emerald-800 rounded-2xl h-80 flex items-center justify-center text-emerald-200 text-center p-8">
-                            <div>
-                                <i class="fa-solid fa-image text-5xl mb-4 text-amber-400"></i>
-                                <h3 class="font-bold text-xl text-white">Suasana Majelis Al Husein</h3>
-                                <p class="text-sm mt-2">Kebersamaan jamaah dalam menuntut ilmu agama.</p>
-                            </div>
-                        </div>
+                    <div class="bg-brand rounded-3xl p-2 shadow-2xl overflow-hidden">
+                        <img src="img/tentang.jpg" alt="Suasana Majelis" class="rounded-2xl h-80 w-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542816417-0983cbe82752?q=80&w=800';">
                     </div>
                 </div>
             </div>
@@ -148,21 +140,21 @@
     <section id="jadwal" class="py-20 bg-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-emerald-700 font-bold uppercase tracking-wider text-sm">Agenda & Waktu</span>
-                <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-emerald-950 mt-2">Jadwal Kajian & Majelis Rutin</h2>
+                <span class="text-brand font-bold uppercase tracking-wider text-sm">Agenda & Waktu</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-slate-900 mt-2">Jadwal Kajian & Majelis Rutin</h2>
                 <p class="text-slate-600 mt-3">Mari hadir dan raih keberkahan majelis ilmu bersama para asatidz.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-xl transition">
-                    <div class="bg-emerald-900 text-white p-4 flex justify-between items-center">
+                    <div class="bg-brand text-white p-4 flex justify-between items-center">
                         <span class="font-bold"><i class="fa-regular fa-calendar mr-2"></i> Setiap Rabu Malam</span>
-                        <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-2.5 py-1 rounded-full">Ba'da Isya</span>
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-2.5 py-1 rounded-full">Ba'da Isya</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-emerald-950 mb-2">Kajian Kitab Riyadhus Shalihin</h3>
-                        <p class="text-sm text-slate-600 mb-4"><i class="fa-solid fa-chalkboard-user mr-2 text-emerald-800"></i> Ustadz H. Ahmad Fauzi, Lc.</p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Kajian Kitab Riyadhus Shalihin</h3>
+                        <p class="text-sm text-slate-600 mb-4"><i class="fa-solid fa-chalkboard-user mr-2 text-brand"></i> Ustadz H. Ahmad Fauzi, Lc.</p>
                         <hr class="my-4 border-slate-100">
                         <div class="flex items-center text-xs text-slate-500">
                             <i class="fa-solid fa-location-dot mr-2 text-amber-500 text-base"></i>
@@ -173,13 +165,13 @@
 
                 <!-- Card 2 -->
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-xl transition">
-                    <div class="bg-emerald-900 text-white p-4 flex justify-between items-center">
+                    <div class="bg-brand text-white p-4 flex justify-between items-center">
                         <span class="font-bold"><i class="fa-regular fa-calendar mr-2"></i> Setiap Jumat Sore</span>
-                        <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-2.5 py-1 rounded-full">16.00 WIB</span>
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-2.5 py-1 rounded-full">16.00 WIB</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-emerald-950 mb-2">Majelis Dzikir & Sholawat</h3>
-                        <p class="text-sm text-slate-600 mb-4"><i class="fa-solid fa-chalkboard-user mr-2 text-emerald-800"></i> Habib Abdullah Al-Haddad</p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Majelis Dzikir & Sholawat</h3>
+                        <p class="text-sm text-slate-600 mb-4"><i class="fa-solid fa-chalkboard-user mr-2 text-brand"></i> Habib Abdullah Al-Haddad</p>
                         <hr class="my-4 border-slate-100">
                         <div class="flex items-center text-xs text-slate-500">
                             <i class="fa-solid fa-location-dot mr-2 text-amber-500 text-base"></i>
@@ -190,13 +182,13 @@
 
                 <!-- Card 3 -->
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 hover:shadow-xl transition">
-                    <div class="bg-emerald-900 text-white p-4 flex justify-between items-center">
+                    <div class="bg-brand text-white p-4 flex justify-between items-center">
                         <span class="font-bold"><i class="fa-regular fa-calendar mr-2"></i> Ahad Pekan ke-2</span>
-                        <span class="bg-amber-500 text-emerald-950 text-xs font-bold px-2.5 py-1 rounded-full">08.00 WIB</span>
+                        <span class="bg-amber-500 text-slate-900 text-xs font-bold px-2.5 py-1 rounded-full">08.00 WIB</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-emerald-950 mb-2">Tabligh Akbar Bulanan</h3>
-                        <p class="text-sm text-slate-600 mb-4"><i class="fa-solid fa-chalkboard-user mr-2 text-emerald-800"></i> Guest Speaker / Ulama Undangan</p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Tabligh Akbar Bulanan</h3>
+                        <p class="text-sm text-slate-600 mb-4"><i class="fa-solid fa-chalkboard-user mr-2 text-brand"></i> Guest Speaker / Ulama Undangan</p>
                         <hr class="my-4 border-slate-100">
                         <div class="flex items-center text-xs text-slate-500">
                             <i class="fa-solid fa-location-dot mr-2 text-amber-500 text-base"></i>
@@ -211,36 +203,32 @@
     <!-- Galeri -->
     <section id="galeri" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-emerald-700 font-bold uppercase tracking-wider text-sm">Dokumentasi</span>
-            <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-emerald-950 mt-2 mb-4">Galeri Kegiatan Majelis</h2>
+            <span class="text-brand font-bold uppercase tracking-wider text-sm">Dokumentasi</span>
+            <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-slate-900 mt-2 mb-4">Galeri Kegiatan Majelis</h2>
             <p class="text-slate-600 max-w-xl mx-auto mb-12">Potret kebersamaan dan kekhidmatan jamaah dalam berbagai acara.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-emerald-900 h-60 rounded-2xl flex items-center justify-center text-white shadow-md relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-                    <div class="relative z-10 text-center p-4">
-                        <i class="fa-solid fa-camera text-3xl mb-2 text-amber-400"></i>
+                <div class="h-60 rounded-2xl overflow-hidden shadow-md relative group">
+                    <img src="img/galeri1.jpg" alt="Galeri 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=600';">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-end p-4 text-white">
                         <p class="font-bold text-sm">Kajian Akbar</p>
                     </div>
                 </div>
-                <div class="bg-emerald-800 h-60 rounded-2xl flex items-center justify-center text-white shadow-md relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-                    <div class="relative z-10 text-center p-4">
-                        <i class="fa-solid fa-camera text-3xl mb-2 text-amber-400"></i>
+                <div class="h-60 rounded-2xl overflow-hidden shadow-md relative group">
+                    <img src="img/galeri2.jpg" alt="Galeri 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=600';">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-end p-4 text-white">
                         <p class="font-bold text-sm">Pembacaan Maulid</p>
                     </div>
                 </div>
-                <div class="bg-teal-900 h-60 rounded-2xl flex items-center justify-center text-white shadow-md relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-                    <div class="relative z-10 text-center p-4">
-                        <i class="fa-solid fa-camera text-3xl mb-2 text-amber-400"></i>
+                <div class="h-60 rounded-2xl overflow-hidden shadow-md relative group">
+                    <img src="img/galeri3.jpg" alt="Galeri 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1590076175571-4b5459efb08c?q=80&w=600';">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-end p-4 text-white">
                         <p class="font-bold text-sm">Santunan Yatim</p>
                     </div>
                 </div>
-                <div class="bg-emerald-950 h-60 rounded-2xl flex items-center justify-center text-white shadow-md relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition"></div>
-                    <div class="relative z-10 text-center p-4">
-                        <i class="fa-solid fa-camera text-3xl mb-2 text-amber-400"></i>
+                <div class="h-60 rounded-2xl overflow-hidden shadow-md relative group">
+                    <img src="img/galeri4.jpg" alt="Galeri 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=600';">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-end p-4 text-white">
                         <p class="font-bold text-sm">Silaturahim Jamaah</p>
                     </div>
                 </div>
@@ -249,7 +237,7 @@
     </section>
 
     <!-- Donasi / Infaq -->
-    <section id="donasi" class="py-20 bg-emerald-950 text-white">
+    <section id="donasi" class="py-20 bg-brand-darker text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <span class="text-amber-400 font-bold uppercase tracking-wider text-sm">Infaq & Sedekah Jariyah</span>
@@ -258,47 +246,44 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-emerald-900 p-8 rounded-2xl border border-emerald-800 shadow-xl">
+                <div class="bg-brand-dark p-8 rounded-2xl border border-emerald-700 shadow-xl">
                     <div class="flex items-center space-x-4 mb-6">
-                        <div class="bg-amber-500 text-emerald-950 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">
+                        <div class="bg-amber-500 text-slate-900 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">
                             <i class="fa-solid fa-building-columns"></i>
                         </div>
                         <div>
                             <h4 class="font-bold text-lg">Bank Syariah Indonesia (BSI)</h4>
-                            <p class="text-xs text-emerald-300">Kode Bank: 451</p>
+                            <p class="text-xs text-emerald-200">Kode Bank: 451</p>
                         </div>
                     </div>
-                    <div class="bg-emerald-950 p-4 rounded-xl mb-4 flex justify-between items-center border border-emerald-800">
+                    <div class="bg-brand-darker p-4 rounded-xl mb-4 flex justify-between items-center border border-emerald-700">
                         <div>
                             <span class="text-xs text-slate-400 block">Nomor Rekening</span>
                             <span class="text-xl font-mono font-bold text-amber-400">7123456789</span>
                         </div>
-                        <button onclick="navigator.clipboard.writeText('7123456789'); alert('Nomor rekening berhasil disalin!');" class="bg-emerald-800 hover:bg-emerald-700 text-xs px-3 py-2 rounded-lg font-semibold transition">
+                        <button onclick="navigator.clipboard.writeText('7123456789'); alert('Nomor rekening berhasil disalin!');" class="bg-brand hover:bg-emerald-600 text-xs px-3 py-2 rounded-lg font-semibold transition">
                             <i class="fa-regular fa-copy mr-1"></i> Salin
                         </button>
                     </div>
                     <p class="text-sm text-emerald-200">Atas Nama: <strong class="text-white">Yayasan Majelis Al Husein</strong></p>
                 </div>
 
-                <div class="bg-emerald-900 p-8 rounded-2xl border border-emerald-800 shadow-xl flex flex-col justify-between">
+                <div class="bg-brand-dark p-8 rounded-2xl border border-emerald-700 shadow-xl flex flex-col justify-between">
                     <div>
                         <div class="flex items-center space-x-4 mb-6">
-                            <div class="bg-amber-500 text-emerald-950 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">
+                            <div class="bg-amber-500 text-slate-900 w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">
                                 <i class="fa-solid fa-qrcode"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg">QRIS Nasional</h4>
-                                <p class="text-xs text-emerald-300">Scan via Semua E-Wallet & Mobile Banking</p>
+                                <p class="text-xs text-emerald-200">Scan via Semua E-Wallet & Mobile Banking</p>
                             </div>
                         </div>
                         <div class="bg-white p-4 rounded-xl flex items-center justify-center h-44 text-slate-800 text-center">
-                            <div>
-                                <i class="fa-solid fa-qrcode text-6xl text-emerald-900 mb-2"></i>
-                                <span class="text-xs font-bold text-slate-600 block">[ QRIS MAJELIS AL HUSEIN ]</span>
-                            </div>
+                            <img src="img/qris.png" alt="QRIS Majelis" class="h-36 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/078B4F/FFFFFF?text=QRIS+CODE';">
                         </div>
                     </div>
-                    <p class="text-xs text-center text-emerald-300 mt-4">Konfirmasi transfer via WhatsApp setelah berdonasi.</p>
+                    <p class="text-xs text-center text-emerald-200 mt-4">Konfirmasi transfer via WhatsApp setelah berdonasi.</p>
                 </div>
             </div>
         </div>
@@ -308,31 +293,31 @@
     <section id="kontak" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-emerald-700 font-bold uppercase tracking-wider text-sm">Hubungi Kami</span>
-                <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-emerald-950 mt-2">Sekretariat & Lokasi</h2>
+                <span class="text-brand font-bold uppercase tracking-wider text-sm">Hubungi Kami</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] text-slate-900 mt-2">Sekretariat & Lokasi</h2>
                 <p class="text-slate-600 mt-3">Silakan hubungi kami untuk informasi lebih lanjut seputar kegiatan majelis.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-center">
-                    <div class="bg-emerald-100 text-emerald-800 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl" style="background-color: #e6f3ed; color: #078B4F;">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
-                    <h4 class="font-bold text-emerald-950 mb-2">Alamat Sekretariat</h4>
+                    <h4 class="font-bold text-slate-900 mb-2">Alamat Sekretariat</h4>
                     <p class="text-sm text-slate-600">Jl. KH. Hasyim Ashari No. 45, Tajur Halang, Bogor, Jawa Barat</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-center">
-                    <div class="bg-emerald-100 text-emerald-800 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl" style="background-color: #e6f3ed; color: #078B4F;">
                         <i class="fa-solid fa-phone"></i>
                     </div>
-                    <h4 class="font-bold text-emerald-950 mb-2">WhatsApp Admin</h4>
+                    <h4 class="font-bold text-slate-900 mb-2">WhatsApp Admin</h4>
                     <p class="text-sm text-slate-600">+62 812-3456-7890<br>(Admin Majelis)</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 text-center">
-                    <div class="bg-emerald-100 text-emerald-800 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl" style="background-color: #e6f3ed; color: #078B4F;">
                         <i class="fa-solid fa-envelope"></i>
                     </div>
-                    <h4 class="font-bold text-emerald-950 mb-2">Email Resmi</h4>
+                    <h4 class="font-bold text-slate-900 mb-2">Email Resmi</h4>
                     <p class="text-sm text-slate-600">info@majelisalhusein.org<br>admin@majelisalhusein.org</p>
                 </div>
             </div>
@@ -340,7 +325,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-emerald-950 text-white py-12 border-t border-emerald-900">
+    <footer class="bg-brand-darker text-white py-12 border-t border-emerald-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <div class="mb-6 md:mb-0">
                 <span class="text-xl font-bold font-['Amiri'] block mb-1">Majelis Al Husein</span>
