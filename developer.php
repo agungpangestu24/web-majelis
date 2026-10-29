@@ -25,7 +25,7 @@ if (isset($_POST['upload_galeri'])) {
     }
 }
 
-// Proses Hapus Galeri
+// Proses Hapus Galeri (Langsung Hapus via Database & File)
 if (isset($_GET['hapus_galeri'])) {
     $id = (int)$_GET['hapus_galeri'];
     $q = mysqli_query($conn, "SELECT * FROM galeri_majelis WHERE id = $id");
@@ -54,7 +54,6 @@ $users_data  = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
 </head>
 <body class="bg-slate-950 text-slate-100 font-['Plus_Jakarta_Sans',sans-serif] min-h-screen">
     
-    <!-- Navbar Khusus Developer -->
     <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-xl border-b border-amber-500/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
@@ -68,7 +67,7 @@ $users_data  = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-800 text-amber-400 hover:bg-slate-700 transition border border-slate-700" title="Ganti Mode Terang/Gelap">
+                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-800 text-amber-400 hover:bg-slate-700 transition border border-slate-700">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
                     <span class="text-xs bg-slate-800 px-3.5 py-2 rounded-xl border border-slate-700 font-semibold"><i class="fa-solid fa-user-shield text-amber-400 mr-1.5"></i> <?= $_SESSION['nama']; ?></span>
@@ -86,35 +85,10 @@ $users_data  = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
             </div>
         <?php } ?>
 
-        <!-- KARTU STATISTIK & KONTROL CEPAT -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl flex items-center space-x-4">
-                <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl border border-amber-500/20"><i class="fa-solid fa-images"></i></div>
-                <div>
-                    <h4 class="text-xs uppercase text-slate-400 font-bold tracking-wider">Total Galeri Foto</h4>
-                    <p class="text-2xl font-bold font-['Amiri'] text-white mt-1"><?= mysqli_num_rows($galeri_data); ?> Foto Momen</p>
-                </div>
-            </div>
-            <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl flex items-center space-x-4">
-                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl border border-emerald-500/20"><i class="fa-solid fa-users"></i></div>
-                <div>
-                    <h4 class="text-xs uppercase text-slate-400 font-bold tracking-wider">Total Akun Terdaftar</h4>
-                    <p class="text-2xl font-bold font-['Amiri'] text-white mt-1"><?= mysqli_num_rows($users_data); ?> Pengguna</p>
-                </div>
-            </div>
-            <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-xl flex items-center space-x-4">
-                <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl border border-blue-500/20"><i class="fa-solid fa-server"></i></div>
-                <div>
-                    <h4 class="text-xs uppercase text-slate-400 font-bold tracking-wider">Status Sistem</h4>
-                    <p class="text-xl font-bold text-emerald-400 mt-1">Aktif (Localhost)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION UPLOAD GALERI SKALA BESAR DENGAN TAHUN & KETERANGAN -->
+        <!-- SECTION UPLOAD GALERI SKALA BESAR -->
         <section class="bg-slate-900 p-8 rounded-3xl shadow-2xl border border-amber-500/30">
             <h3 class="text-2xl font-bold font-['Amiri'] text-amber-400 mb-2"><i class="fa-solid fa-cloud-arrow-up mr-2"></i> Unggah Dokumentasi Galeri (Skala Besar)</h3>
-            <p class="text-xs text-slate-400 mb-6">Tambahkan foto kegiatan majelis lengkap dengan tahun dan kata-kata mutiara/keterangannya agar tampil di halaman utama.</p>
+            <p class="text-xs text-slate-400 mb-6">Tambahkan foto kegiatan majelis lengkap dengan tahun dan kata-kata mutiara/keterangannya.</p>
             
             <form action="" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
@@ -127,7 +101,7 @@ $users_data  = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
                 </div>
                 <div class="md:col-span-3">
                     <label class="block text-xs uppercase font-bold text-slate-300 mb-2">Keterangan / Kata-Kata Mutiara Foto</label>
-                    <textarea name="keterangan" rows="3" required placeholder="Contoh: Suasana penuh kekhidmatan saat pengajian akbar malam jumat bersama para jamaah..." class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500"></textarea>
+                    <textarea name="keterangan" rows="3" required placeholder="Contoh: Suasana penuh kekhidmatan saat pengajian akbar..." class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500"></textarea>
                 </div>
                 <div class="md:col-span-3">
                     <button type="submit" name="upload_galeri" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg transition text-sm">
@@ -137,7 +111,27 @@ $users_data  = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
             </form>
         </section>
 
-        <!-- DAFTAR GALERI YANG TELAH DI-UPLOAD -->
+        <!-- PENGATURAN LINK SOSIAL MEDIA -->
+        <section class="bg-slate-900 p-8 rounded-3xl shadow-2xl border border-slate-800">
+            <h3 class="text-2xl font-bold font-['Amiri'] text-amber-400 mb-2"><i class="fa-solid fa-share-nodes mr-2"></i> Pengaturan Link & Kontak Sosial Media</h3>
+            <p class="text-xs text-slate-400 mb-6">Salin dan tempel link resmi WhatsApp, Instagram, dan TikTok Majelis Al Husein di sini agar jamaah bisa terhubung.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                    <label class="block text-xs font-bold text-emerald-400 mb-1"><i class="fa-brands fa-whatsapp mr-1"></i> Nomor / Link WhatsApp</label>
+                    <input type="text" value="https://wa.me/6281234567890" class="w-full bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-xs text-white">
+                </div>
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                    <label class="block text-xs font-bold text-pink-400 mb-1"><i class="fa-brands fa-instagram mr-1"></i> Link Instagram</label>
+                    <input type="text" value="https://instagram.com/majelisalhusein" class="w-full bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-xs text-white">
+                </div>
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                    <label class="block text-xs font-bold text-sky-400 mb-1"><i class="fa-brands fa-tiktok mr-1"></i> Link TikTok</label>
+                    <input type="text" value="https://tiktok.com/@majelisalhusein" class="w-full bg-slate-900 border border-slate-700 px-3 py-2 rounded-xl text-xs text-white">
+                </div>
+            </div>
+        </section>
+
+        <!-- DAFTAR GALERI & TOMBOL HAPUS LANGSUNG -->
         <section class="bg-slate-900 p-8 rounded-3xl shadow-2xl border border-slate-800">
             <h3 class="text-2xl font-bold font-['Amiri'] text-amber-400 mb-6"><i class="fa-solid fa-photo-film mr-2"></i> Arsip Galeri Foto Majelis</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -153,51 +147,15 @@ $users_data  = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
                             <p class="text-xs text-slate-300 italic">"<?= htmlspecialchars($g['keterangan']); ?>"</p>
                         </div>
                         <div class="p-4 pt-0">
-                            <a href="developer.php?hapus_galeri=<?= $g['id']; ?>" onclick="return confirm('Yakin ingin menghapus foto ini dari galeri?');" class="block text-center bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-xs font-bold transition">
-                                <i class="fa-solid fa-trash mr-1"></i> Hapus Foto
+                            <a href="developer.php?hapus_galeri=<?= $g['id']; ?>" class="block text-center bg-red-600 hover:bg-red-500 text-white py-2.5 rounded-xl text-xs font-bold transition">
+                                <i class="fa-solid fa-trash mr-1"></i> Hapus Foto Langsung
                             </a>
                         </div>
                     </div>
                 <?php } ?>
             </div>
         </section>
-
-        <!-- MANAJEMEN AKUN PENGGUNA SISTEM -->
-        <section class="bg-slate-900 p-8 rounded-3xl shadow-2xl border border-slate-800">
-            <h3 class="text-2xl font-bold font-['Amiri'] text-amber-400 mb-6"><i class="fa-solid fa-users-gear mr-2"></i> Manajemen Akun Pengguna Sistem</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead class="bg-slate-800 text-amber-300 text-xs uppercase">
-                        <tr>
-                            <th class="px-4 py-3">ID</th>
-                            <th class="px-4 py-3">Nama Lengkap</th>
-                            <th class="px-4 py-3">Username</th>
-                            <th class="px-4 py-3">Role / Hak Akses</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800 text-slate-300">
-                        <?php while($u = mysqli_fetch_assoc($users_data)) { ?>
-                        <tr>
-                            <td class="px-4 py-3"><?= $u['id']; ?></td>
-                            <td class="px-4 py-3 font-semibold text-white"><?= htmlspecialchars($u['nama_lengkap']); ?></td>
-                            <td class="px-4 py-3 font-mono text-xs text-slate-400"><?= htmlspecialchars($u['username']); ?></td>
-                            <td class="px-4 py-3">
-                                <span class="px-3 py-1 rounded-full text-xs font-bold <?= $u['role'] == 'developer' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : ($u['role'] == 'admin' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-slate-800 text-slate-300 border border-slate-700'); ?>">
-                                    <?= strtoupper($u['role']); ?>
-                                </span>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
     </main>
-
-    <script>
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
-    </script>
+    <script>function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }</script>
 </body>
 </html>

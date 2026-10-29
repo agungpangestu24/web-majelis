@@ -52,7 +52,6 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                         <a href="register.php" class="bg-emerald-800 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-emerald-700 transition border border-emerald-600 shadow"><i class="fa-solid fa-user-plus mr-1"></i> Daftar Akun</a>
                     <?php } ?>
 
-                    <!-- Tombol Dark/Light Mode -->
                     <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-emerald-800 dark:bg-slate-800 text-amber-400 hover:opacity-80 transition border border-emerald-600 dark:border-slate-700 shadow" title="Ganti Mode">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
@@ -64,18 +63,18 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
     <!-- Header / Hero Section -->
     <header id="beranda" data-aos="fade-down" data-aos-duration="1000" class="relative bg-gradient-to-r from-emerald-950 via-[#078B4F] to-teal-900 text-white py-24 md:py-32 text-center overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+            <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6" data-aos="zoom-in">
                 <i class="fa-solid fa-star-and-crescent mr-2"></i> Website Resmi Majelis Al Husein
             </span>
-            <h1 class="text-4xl md:text-6xl font-bold font-['Amiri'] mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl font-bold font-['Amiri'] mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
                 Menyalakan Cahaya Iman & Ilmu <br>Bersama <span class="text-amber-400">Majelis Al Husein</span>
             </h1>
-            <p class="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10 font-light">
+            <p class="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10 font-light" data-aos="fade-up" data-aos-delay="200">
                 Pusat dakwah, pengajian rutin anak & pemuda, serta keliling majelis, masjid, dan musala.
             </p>
 
             <?php if(!$is_logged_in) { ?>
-                <div class="bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl max-w-xl mx-auto border border-amber-500/40 shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl max-w-xl mx-auto border border-amber-500/40 shadow-2xl" data-aos="zoom-in" data-aos-delay="300">
                     <div class="text-amber-400 text-3xl mb-3"><i class="fa-solid fa-lock"></i></div>
                     <h3 class="text-xl font-bold font-['Amiri'] mb-2">Akses Eksklusif Konten & Absensi</h3>
                     <p class="text-xs text-slate-300 mb-6">Silakan masuk atau daftarkan akun Anda terlebih dahulu untuk membuka seluruh fitur lengkap, jadwal, dan galeri majelis.</p>
@@ -89,7 +88,7 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                     </div>
                 </div>
             <?php } else { ?>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="300">
                     <a href="#mengaji" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
                         <i class="fa-solid fa-child-reaching mr-2"></i> Jadwal Mengaji Anak
                     </a>
@@ -103,8 +102,8 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
 
     <?php if($is_logged_in) { ?>
         <!-- Jadwal Azan 5 Waktu -->
-        <section id="azan-section" data-aos="fade-up" class="py-12 bg-[#078B4F] text-white border-y border-emerald-700 text-center">
-            <div class="max-w-7xl mx-auto px-4">
+        <section id="azan-section" class="py-12 bg-[#078B4F] text-white border-y border-emerald-700 text-center">
+            <div class="max-w-7xl mx-auto px-4" data-aos="fade-up">
                 <h3 class="text-3xl font-bold font-['Amiri'] mb-2"><i class="fa-solid fa-clock text-amber-400 mr-2"></i> Jadwal Azan 5 Waktu</h3>
                 <p class="text-xs text-emerald-200 mb-8">Wilayah Bogor & Sekitarnya</p>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
@@ -142,16 +141,16 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
         </section>
 
         <!-- Mengaji Senin-Jumat -->
-        <section id="mengaji" data-aos="fade-up" class="py-20 bg-slate-100 dark:bg-slate-800 text-center">
-            <div class="max-w-7xl mx-auto px-4">
+        <section id="mengaji" class="py-20 bg-slate-100 dark:bg-slate-800 text-center">
+            <div class="max-w-7xl mx-auto px-4" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] mb-6">Jadwal Mengaji Santri (Senin - Jumat)</h2>
                 <p class="text-slate-600 dark:text-slate-300 mb-8">Pukul 16.00 - 17.30 WIB setiap hari kerja.</p>
             </div>
         </section>
 
         <!-- Absen Santri -->
-        <section id="absen-santri" data-aos="fade-up" class="py-20 bg-white dark:bg-slate-900">
-            <div class="max-w-7xl mx-auto px-4">
+        <section id="absen-santri" class="py-20 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4" data-aos="fade-up">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold font-['Amiri']">Absensi & Perkembangan Anak Mengaji</h2>
                     <p class="text-slate-600 dark:text-slate-300 mt-2">Pemantauan kehadiran santri oleh orang tua / wali.</p>
@@ -191,8 +190,8 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
         </section>
 
         <!-- Galeri Dinamis Skala Besar -->
-        <section id="galeri" data-aos="fade-up" class="py-20 bg-slate-50 dark:bg-slate-800 text-center">
-            <div class="max-w-7xl mx-auto px-4">
+        <section id="galeri" class="py-20 bg-slate-50 dark:bg-slate-800 text-center">
+            <div class="max-w-7xl mx-auto px-4" data-aos="fade-up">
                 <span class="text-[#078B4F] font-bold uppercase tracking-wider text-sm">Dokumentasi Kenangan</span>
                 <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] mt-2 mb-4">Galeri Foto Momen Majelis Al Husein</h2>
                 <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto mb-12">Arsip dokumentasi kegiatan dari tahun ke tahun.</p>
@@ -218,16 +217,22 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
         </section>
     <?php } ?>
 
-    <footer class="bg-emerald-950 dark:bg-slate-950 text-white py-8 text-center text-xs border-t border-emerald-900 dark:border-slate-800">
-        &copy; 2026 Majelis Al Husein. All Rights Reserved.
+    <!-- Footer dengan Sosmed Resmi -->
+    <footer class="bg-emerald-950 dark:bg-slate-950 text-white py-12 text-center text-xs border-t border-emerald-900 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 space-y-6" data-aos="fade-up">
+            <div class="flex justify-center space-x-6 text-xl">
+                <a href="https://wa.me/6281234567890" target="_blank" class="text-emerald-400 hover:text-emerald-300 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/majelisalhusein" target="_blank" class="text-pink-400 hover:text-pink-300 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@majelisalhusein" target="_blank" class="text-sky-400 hover:text-sky-300 transition"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div>&copy; 2026 Majelis Al Husein. All Rights Reserved.</div>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
+        function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
     </script>
     <script src="script.js"></script>
 </body>
