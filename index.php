@@ -70,7 +70,7 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                 Menyalakan Cahaya Iman & Ilmu <br>Bersama <span class="text-amber-400">Majelis Al Husein</span>
             </h1>
             <p class="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10 font-light" data-aos="fade-up" data-aos-delay="200">
-                Pusat dakwah, pengajian rutin anak & pemuda, serta keliling majelis, masjid, dan musala.
+                Pusat dakwah, pengajian rutin anak & pemuda.
             </p>
 
             <?php if(!$is_logged_in) { ?>
@@ -237,3 +237,4 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
     <script src="script.js"></script>
 </body>
 </html>
+
