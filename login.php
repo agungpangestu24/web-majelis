@@ -61,10 +61,6 @@ if (isset($_POST['login'])) {
             <div>Belum punya akun jamaah? <a href="register.php" class="text-amber-400 hover:underline font-bold">Daftar di sini</a></div>
             <div><a href="index.php" class="hover:text-amber-400"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke Beranda</a></div>
         </div>
-        <div class="mt-4 pt-4 border-t border-slate-700 text-center text-[11px] text-slate-500 space-y-1">
-            <div>Developer: <code class="text-amber-400">developer</code> / <code class="text-amber-400">password123</code></div>
-            <div>Admin/Guru: <code class="text-amber-400">admin</code> / <code class="text-amber-400">password123</code></div>
-        </div>
     </div>
 </body>
 </html>
