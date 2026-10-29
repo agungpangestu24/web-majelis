@@ -1,8 +1,8 @@
 ﻿<?php
 include 'koneksi.php';
-// Cek apakah user sudah login atau belum
 $is_logged_in = isset($_SESSION['user']);
 $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji ORDER BY id DESC") : null;
+$galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majelis ORDER BY id DESC") : null;
 ?>
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
@@ -13,6 +13,7 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,14 +23,14 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
     <nav class="bg-[#078B4F] dark:bg-slate-950 text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-3" data-aos="fade-right">
                     <img src="img/logo.png" alt="Logo" class="w-12 h-12 object-contain rounded-lg" onerror="this.onerror=null; this.src='https://via.placeholder.com/50/078B4F/FFFFFF?text=MAJELIS';">
                     <div>
                         <span class="text-xl font-bold tracking-wide block font-['Amiri']">Majelis Al Husein</span>
                         <span class="text-xs text-emerald-100 tracking-wider">Pusat Dakwah & Pembinaan Umat</span>
                     </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-6 font-medium text-sm">
+                <div class="hidden md:flex items-center space-x-6 font-medium text-sm" data-aos="fade-left">
                     <?php if($is_logged_in) { ?>
                         <a href="#beranda" class="hover:text-amber-400 transition">Beranda</a>
                         <a href="#azan-section" class="hover:text-amber-400 transition">Jadwal Azan</a>
@@ -38,15 +39,17 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
                         <a href="#absen-santri" class="hover:text-amber-400 transition">Absen Santri</a>
                         <a href="#galeri" class="hover:text-amber-400 transition">Galeri</a>
                         
-                        <?php if($_SESSION['role'] == 'admin') { ?>
-                            <a href="admin.php" class="bg-amber-500 text-slate-900 px-3 py-1.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-user-gear mr-1"></i> Panel Admin</a>
+                        <?php if($_SESSION['role'] == 'developer') { ?>
+                            <a href="developer.php" class="bg-amber-500 text-slate-900 px-3 py-1.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-code mr-1"></i> Panel Developer</a>
+                        <?php } elseif($_SESSION['role'] == 'admin') { ?>
+                            <a href="admin.php" class="bg-amber-500 text-slate-900 px-3 py-1.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-chalkboard-user mr-1"></i> Panel Guru</a>
                         <?php } else { ?>
                             <span class="text-xs bg-emerald-800 px-3 py-1.5 rounded-lg border border-emerald-600"><i class="fa-solid fa-user mr-1"></i> <?= $_SESSION['nama']; ?></span>
                         <?php } ?>
                         <a href="logout.php" class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg text-xs font-bold transition"><i class="fa-solid fa-power-off"></i></a>
                     <?php } else { ?>
                         <a href="login.php" class="bg-amber-500 text-slate-900 px-4 py-2 rounded-xl font-bold text-xs hover:bg-amber-400 transition"><i class="fa-solid fa-right-to-bracket mr-1"></i> Login</a>
-                        <a href="register.php" class="bg-emerald-800 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-emerald-700 transition border border-emerald-600"><i class="fa-solid fa-user-plus mr-1"></i> Daftar (Register)</a>
+                        <a href="register.php" class="bg-emerald-800 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-emerald-700 transition border border-emerald-600"><i class="fa-solid fa-user-plus mr-1"></i> Daftar Akun</a>
                     <?php } ?>
                 </div>
             </div>
@@ -54,7 +57,7 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
     </nav>
 
     <!-- Header / Hero Section -->
-    <header id="beranda" class="relative bg-gradient-to-r from-emerald-950 via-[#078B4F] to-teal-900 text-white py-24 md:py-32 text-center">
+    <header id="beranda" data-aos="fade-down" data-aos-duration="1000" class="relative bg-gradient-to-r from-emerald-950 via-[#078B4F] to-teal-900 text-white py-24 md:py-32 text-center overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
                 <i class="fa-solid fa-star-and-crescent mr-2"></i> Website Resmi Majelis Al Husein
@@ -68,10 +71,10 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
 
             <?php if(!$is_logged_in) { ?>
                 <!-- TAMPILAN KHUSUS TAMU (BELUM LOGIN) -->
-                <div class="bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl max-w-xl mx-auto border border-amber-500/40 shadow-2xl">
+                <div class="bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl max-w-xl mx-auto border border-amber-500/40 shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
                     <div class="text-amber-400 text-3xl mb-3"><i class="fa-solid fa-lock"></i></div>
-                    <h3 class="text-xl font-bold font-['Amiri'] mb-2">Akses Konten Lengkap & Absensi Santri</h3>
-                    <p class="text-xs text-slate-300 mb-6">Silakan masuk atau daftarkan akun Anda terlebih dahulu untuk melihat jadwal lengkap, galeri, dan memantau absensi anak.</p>
+                    <h3 class="text-xl font-bold font-['Amiri'] mb-2">Akses Eksklusif Konten & Absensi</h3>
+                    <p class="text-xs text-slate-300 mb-6">Silakan masuk atau daftarkan akun Anda terlebih dahulu untuk membuka seluruh fitur lengkap, jadwal, dan galeri majelis.</p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
                         <a href="login.php" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-xl text-sm shadow transition">
                             <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk (Login)
@@ -82,7 +85,6 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
                     </div>
                 </div>
             <?php } else { ?>
-                <!-- TOMBOL NAVIGASI CEPAT JIKA SUDAH LOGIN -->
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="#mengaji" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
                         <i class="fa-solid fa-child-reaching mr-2"></i> Jadwal Mengaji Anak
@@ -96,19 +98,19 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
     </header>
 
     <?php if($is_logged_in) { ?>
-        <!-- KONTEN LENGKAP HANYA MUNCUL SETELAH LOGIN -->
+        <!-- KONTEN TERBUKA SEPENUHNYA DENGAN ANIMASI ELEGAN -->
         
         <!-- Jadwal Azan 5 Waktu -->
-        <section id="azan-section" class="py-12 bg-[#078B4F] text-white border-y border-emerald-700 text-center">
+        <section id="azan-section" data-aos="fade-up" class="py-12 bg-[#078B4F] text-white border-y border-emerald-700 text-center">
             <div class="max-w-7xl mx-auto px-4">
                 <h3 class="text-3xl font-bold font-['Amiri'] mb-2"><i class="fa-solid fa-clock text-amber-400 mr-2"></i> Jadwal Azan 5 Waktu</h3>
                 <p class="text-xs text-emerald-200 mb-8">Wilayah Bogor & Sekitarnya</p>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600"><span class="block text-xs uppercase text-amber-300 font-bold">Subuh</span><span class="text-2xl font-bold font-mono mt-1 block" id="subuh">--:--</span></div>
-                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600"><span class="block text-xs uppercase text-amber-300 font-bold">Dzuhur</span><span class="text-2xl font-bold font-mono mt-1 block" id="dzuhur">--:--</span></div>
-                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600"><span class="block text-xs uppercase text-amber-300 font-bold">Ashar</span><span class="text-2xl font-bold font-mono mt-1 block" id="ashar">--:--</span></div>
-                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600"><span class="block text-xs uppercase text-amber-300 font-bold">Maghrib</span><span class="text-2xl font-bold font-mono mt-1 block" id="maghrib">--:--</span></div>
-                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600 col-span-2 md:col-span-1"><span class="block text-xs uppercase text-amber-300 font-bold">Isya</span><span class="text-2xl font-bold font-mono mt-1 block" id="isya">--:--</span></div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600" data-aos="zoom-in" data-aos-delay="100"><span class="block text-xs uppercase text-amber-300 font-bold">Subuh</span><span class="text-2xl font-bold font-mono mt-1 block" id="subuh">--:--</span></div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600" data-aos="zoom-in" data-aos-delay="200"><span class="block text-xs uppercase text-amber-300 font-bold">Dzuhur</span><span class="text-2xl font-bold font-mono mt-1 block" id="dzuhur">--:--</span></div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600" data-aos="zoom-in" data-aos-delay="300"><span class="block text-xs uppercase text-amber-300 font-bold">Ashar</span><span class="text-2xl font-bold font-mono mt-1 block" id="ashar">--:--</span></div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600" data-aos="zoom-in" data-aos-delay="400"><span class="block text-xs uppercase text-amber-300 font-bold">Maghrib</span><span class="text-2xl font-bold font-mono mt-1 block" id="maghrib">--:--</span></div>
+                    <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600 col-span-2 md:col-span-1" data-aos="zoom-in" data-aos-delay="500"><span class="block text-xs uppercase text-amber-300 font-bold">Isya</span><span class="text-2xl font-bold font-mono mt-1 block" id="isya">--:--</span></div>
                 </div>
                 <button onclick="playAzanSound()" class="bg-amber-500 text-slate-900 px-4 py-2 rounded-xl text-xs font-bold hover:bg-amber-400 shadow">
                     <i class="fa-solid fa-volume-high mr-1"></i> Test Suara Azan
@@ -119,17 +121,17 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
         <!-- Pengajian Malam Jumat -->
         <section id="malam-jumat" class="py-20 bg-white dark:bg-slate-900">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-down">
                     <span class="text-[#078B4F] font-bold uppercase tracking-wider text-sm">Agenda Rutin Keliling</span>
                     <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] mt-2">Pengajian Rutin Malam Jumat</h2>
                     <p class="text-slate-600 dark:text-slate-300 mt-2">Berpindah tempat antara Majelis, Masjid, dan Musala sekitar.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
+                    <div data-aos="fade-right" class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
                         <h4 class="text-xl font-bold font-['Amiri'] mb-2">Majelis Utama & Masjid Jami'</h4>
                         <p class="text-sm text-slate-600 dark:text-slate-300">Kamis Malam Jumat, Ba'da Isya - Kitab Riyadhus Shalihin.</p>
                     </div>
-                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
+                    <div data-aos="fade-left" class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
                         <h4 class="text-xl font-bold font-['Amiri'] mb-2">Musala Warga & Pemuda</h4>
                         <p class="text-sm text-slate-600 dark:text-slate-300">Pekan ke-2 & ke-4, Ba'da Maghrib - Kajian Tematik.</p>
                     </div>
@@ -138,7 +140,7 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
         </section>
 
         <!-- Mengaji Senin-Jumat -->
-        <section id="mengaji" class="py-20 bg-slate-100 dark:bg-slate-800 text-center">
+        <section id="mengaji" data-aos="fade-up" class="py-20 bg-slate-100 dark:bg-slate-800 text-center">
             <div class="max-w-7xl mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] mb-6">Jadwal Mengaji Santri (Senin - Jumat)</h2>
                 <p class="text-slate-600 dark:text-slate-300 mb-8">Pukul 16.00 - 17.30 WIB setiap hari kerja.</p>
@@ -146,7 +148,7 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
         </section>
 
         <!-- Absen Santri -->
-        <section id="absen-santri" class="py-20 bg-white dark:bg-slate-900">
+        <section id="absen-santri" data-aos="fade-up" class="py-20 bg-white dark:bg-slate-900">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold font-['Amiri']">Absensi & Perkembangan Anak Mengaji</h2>
@@ -186,16 +188,29 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
             </div>
         </section>
 
-        <!-- Galeri -->
-        <section id="galeri" class="py-20 bg-slate-50 dark:bg-slate-800 text-center">
+        <!-- Galeri Dinamis Skala Besar (Dengan Tahun & Keterangan) -->
+        <section id="galeri" data-aos="fade-up" class="py-20 bg-slate-50 dark:bg-slate-800 text-center">
             <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] mb-4">Galeri Foto Majelis Al Husein</h2>
-                <p class="text-slate-600 dark:text-slate-300 mb-12">Dokumentasi kegiatan majelis.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="h-60 rounded-2xl overflow-hidden shadow relative"><img src="img/galeri1.jpg" alt="Galeri 1" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300/078B4F/FFFFFF?text=Galeri+1';"></div>
-                    <div class="h-60 rounded-2xl overflow-hidden shadow relative"><img src="img/galeri2.jpg" alt="Galeri 2" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300/078B4F/FFFFFF?text=Galeri+2';"></div>
-                    <div class="h-60 rounded-2xl overflow-hidden shadow relative"><img src="img/galeri3.jpg" alt="Galeri 3" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300/078B4F/FFFFFF?text=Galeri+3';"></div>
-                    <div class="h-60 rounded-2xl overflow-hidden shadow relative"><img src="img/galeri4.jpg" alt="Galeri 4" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300/078B4F/FFFFFF?text=Galeri+4';"></div>
+                <span class="text-[#078B4F] font-bold uppercase tracking-wider text-sm">Dokumentasi Kenangan</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-['Amiri'] mt-2 mb-4">Galeri Foto Momen Majelis Al Husein</h2>
+                <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto mb-12">Arsip dokumentasi kegiatan dari tahun ke tahun.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <?php 
+                    if($galeri_query && mysqli_num_rows($galeri_query) > 0) {
+                        while($g = mysqli_fetch_assoc($galeri_query)) { ?>
+                        <div class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between" data-aos="zoom-in">
+                            <div class="h-60 relative">
+                                <img src="img/<?= htmlspecialchars($g['nama_file']); ?>" alt="Galeri" class="w-full h-full object-cover">
+                                <span class="absolute top-3 right-3 bg-amber-500 text-slate-900 font-bold text-xs px-3 py-1 rounded-full shadow">Tahun <?= $g['tahun']; ?></span>
+                            </div>
+                            <div class="p-6 text-left">
+                                <p class="text-sm text-slate-600 dark:text-slate-300 italic">"<?= htmlspecialchars($g['keterangan']); ?>"</p>
+                            </div>
+                        </div>
+                    <?php } } else { ?>
+                        <div class="col-span-3 text-slate-400 py-10">Belum ada foto galeri yang di-upload oleh Developer.</div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -205,6 +220,15 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
         &copy; 2026 Majelis Al Husein. All Rights Reserved.
     </footer>
 
+    <!-- Inisialisasi Animasi AOS (Muncul Elegan Saat Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

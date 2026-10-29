@@ -10,8 +10,14 @@ if (isset($_POST['login'])) {
         $_SESSION['user'] = $row['username'];
         $_SESSION['role'] = $row['role'];
         $_SESSION['nama'] = $row['nama_lengkap'];
-        if ($row['role'] == 'admin') { header("Location: admin.php"); } 
-        else { header("Location: index.php"); }
+        
+        if ($row['role'] == 'developer') { 
+            header("Location: developer.php"); 
+        } elseif ($row['role'] == 'admin') { 
+            header("Location: admin.php"); 
+        } else { 
+            header("Location: index.php"); 
+        }
         exit();
     } else { $error = "Username atau password salah!"; }
 }
@@ -33,7 +39,7 @@ if (isset($_POST['login'])) {
                 <i class="fa-solid fa-mosque"></i>
             </div>
             <h2 class="text-2xl font-bold font-['Amiri']">Login Majelis Al Husein</h2>
-            <p class="text-xs text-slate-400 mt-1">Masuk untuk Manager (Admin) atau Jamaah / Wali Santri</p>
+            <p class="text-xs text-slate-400 mt-1">Masuk untuk Developer, Pengurus/Guru, atau Jamaah</p>
         </div>
         <?php if($error != "") { ?>
             <div class="mb-4 p-3 bg-red-500/20 border border-red-500 text-red-300 rounded-xl text-xs"><?= $error; ?></div>
@@ -52,11 +58,12 @@ if (isset($_POST['login'])) {
             </button>
         </form>
         <div class="mt-6 text-center text-xs text-slate-400 space-y-2">
-            <div>Belum punya akun jamaah? <a href="register.php" class="text-amber-400 hover:underline font-bold">Daftar (Register) di sini</a></div>
-            <div><a href="index.php" class="hover:text-amber-400"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke Beranda Website</a></div>
+            <div>Belum punya akun jamaah? <a href="register.php" class="text-amber-400 hover:underline font-bold">Daftar di sini</a></div>
+            <div><a href="index.php" class="hover:text-amber-400"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke Beranda</a></div>
         </div>
-        <div class="mt-4 pt-4 border-t border-slate-700 text-center text-[11px] text-slate-500">
-            Login Manager (Admin): <code class="text-amber-400">admin</code> / <code class="text-amber-400">password123</code>
+        <div class="mt-4 pt-4 border-t border-slate-700 text-center text-[11px] text-slate-500 space-y-1">
+            <div>Developer: <code class="text-amber-400">developer</code> / <code class="text-amber-400">password123</code></div>
+            <div>Admin/Guru: <code class="text-amber-400">admin</code> / <code class="text-amber-400">password123</code></div>
         </div>
     </div>
 </body>
