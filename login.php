@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
                 <i class="fa-solid fa-mosque"></i>
             </div>
             <h2 class="text-2xl font-bold font-['Amiri']">Login Majelis Al Husein</h2>
-            <p class="text-xs text-slate-400 mt-1">Masuk untuk Admin Pengurus atau Jamaah / Orang Tua</p>
+            <p class="text-xs text-slate-400 mt-1">Masuk untuk Manager (Admin) atau Jamaah / Wali Santri</p>
         </div>
         <?php if($error != "") { ?>
             <div class="mb-4 p-3 bg-red-500/20 border border-red-500 text-red-300 rounded-xl text-xs"><?= $error; ?></div>
@@ -51,12 +51,12 @@ if (isset($_POST['login'])) {
                 <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk Sekarang
             </button>
         </form>
-        <div class="mt-6 text-center text-xs text-slate-400">
-            <a href="index.php" class="hover:text-amber-400"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke Beranda Website</a>
+        <div class="mt-6 text-center text-xs text-slate-400 space-y-2">
+            <div>Belum punya akun jamaah? <a href="register.php" class="text-amber-400 hover:underline font-bold">Daftar (Register) di sini</a></div>
+            <div><a href="index.php" class="hover:text-amber-400"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke Beranda Website</a></div>
         </div>
         <div class="mt-4 pt-4 border-t border-slate-700 text-center text-[11px] text-slate-500">
-            Login Admin: <code class="text-amber-400">admin</code> / <code class="text-amber-400">password123</code><br>
-            Login User: <code class="text-amber-400">user</code> / <code class="text-amber-400">password123</code>
+            Login Manager (Admin): <code class="text-amber-400">admin</code> / <code class="text-amber-400">password123</code>
         </div>
     </div>
 </body>
