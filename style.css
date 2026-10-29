@@ -4,41 +4,13 @@
     --brand-green-darker: #034426;
     --brand-green-light: #e6f3ed;
 }
-
-.bg-brand {
-    background-color: var(--brand-green) !important;
-}
-
-.bg-brand-dark {
-    background-color: var(--brand-green-dark) !important;
-}
-
-.bg-brand-darker {
-    background-color: var(--brand-green-darker) !important;
-}
-
-.text-brand {
-    color: var(--brand-green) !important;
-}
-
-.border-brand {
-    border-color: var(--brand-green) !important;
-}
-
-body {
-    scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #034426;
-}
-::-webkit-scrollbar-thumb {
-    background: #078B4F;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #d97706;
-}
+.bg-brand { background-color: var(--brand-green) !important; }
+.bg-brand-dark { background-color: var(--brand-green-dark) !important; }
+.bg-brand-darker { background-color: var(--brand-green-darker) !important; }
+.text-brand { color: var(--brand-green) !important; }
+.border-brand { border-color: var(--brand-green) !important; }
+body { scroll-behavior: smooth; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #034426; }
+::-webkit-scrollbar-thumb { background: #078B4F; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #d97706; }
