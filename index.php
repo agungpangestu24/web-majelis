@@ -5,7 +5,7 @@ $santri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM anak_mengaji 
 $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majelis ORDER BY id DESC") : null;
 ?>
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +17,10 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-['Plus_Jakarta_Sans',sans-serif]">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-['Plus_Jakarta_Sans',sans-serif] transition-colors duration-300">
     
     <!-- Navbar -->
-    <nav class="bg-[#078B4F] dark:bg-slate-950 text-white sticky top-0 z-50 shadow-lg">
+    <nav class="bg-[#078B4F] dark:bg-slate-950 text-white sticky top-0 z-50 shadow-lg border-b border-emerald-700 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center space-x-3" data-aos="fade-right">
@@ -40,17 +40,22 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                         <a href="#galeri" class="hover:text-amber-400 transition">Galeri</a>
                         
                         <?php if($_SESSION['role'] == 'developer') { ?>
-                            <a href="developer.php" class="bg-amber-500 text-slate-900 px-3 py-1.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-code mr-1"></i> Panel Developer</a>
+                            <a href="developer.php" class="bg-amber-500 text-slate-950 px-3 py-1.5 rounded-lg font-bold text-xs shadow"><i class="fa-solid fa-code mr-1"></i> Panel Developer</a>
                         <?php } elseif($_SESSION['role'] == 'admin') { ?>
-                            <a href="admin.php" class="bg-amber-500 text-slate-900 px-3 py-1.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-chalkboard-user mr-1"></i> Panel Guru</a>
+                            <a href="admin.php" class="bg-amber-500 text-slate-950 px-3 py-1.5 rounded-lg font-bold text-xs shadow"><i class="fa-solid fa-chalkboard-user mr-1"></i> Panel Guru</a>
                         <?php } else { ?>
                             <span class="text-xs bg-emerald-800 px-3 py-1.5 rounded-lg border border-emerald-600"><i class="fa-solid fa-user mr-1"></i> <?= $_SESSION['nama']; ?></span>
                         <?php } ?>
                         <a href="logout.php" class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg text-xs font-bold transition"><i class="fa-solid fa-power-off"></i></a>
                     <?php } else { ?>
-                        <a href="login.php" class="bg-amber-500 text-slate-900 px-4 py-2 rounded-xl font-bold text-xs hover:bg-amber-400 transition"><i class="fa-solid fa-right-to-bracket mr-1"></i> Login</a>
-                        <a href="register.php" class="bg-emerald-800 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-emerald-700 transition border border-emerald-600"><i class="fa-solid fa-user-plus mr-1"></i> Daftar Akun</a>
+                        <a href="login.php" class="bg-amber-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs hover:bg-amber-400 transition shadow"><i class="fa-solid fa-right-to-bracket mr-1"></i> Login</a>
+                        <a href="register.php" class="bg-emerald-800 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-emerald-700 transition border border-emerald-600 shadow"><i class="fa-solid fa-user-plus mr-1"></i> Daftar Akun</a>
                     <?php } ?>
+
+                    <!-- Tombol Dark/Light Mode -->
+                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-emerald-800 dark:bg-slate-800 text-amber-400 hover:opacity-80 transition border border-emerald-600 dark:border-slate-700 shadow" title="Ganti Mode">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -70,13 +75,12 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
             </p>
 
             <?php if(!$is_logged_in) { ?>
-                <!-- TAMPILAN KHUSUS TAMU (BELUM LOGIN) -->
-                <div class="bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl max-w-xl mx-auto border border-amber-500/40 shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-slate-900/90 backdrop-blur-md p-8 rounded-3xl max-w-xl mx-auto border border-amber-500/40 shadow-2xl" data-aos="zoom-in" data-aos-delay="200">
                     <div class="text-amber-400 text-3xl mb-3"><i class="fa-solid fa-lock"></i></div>
                     <h3 class="text-xl font-bold font-['Amiri'] mb-2">Akses Eksklusif Konten & Absensi</h3>
                     <p class="text-xs text-slate-300 mb-6">Silakan masuk atau daftarkan akun Anda terlebih dahulu untuk membuka seluruh fitur lengkap, jadwal, dan galeri majelis.</p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="login.php" class="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-6 py-3 rounded-xl text-sm shadow transition">
+                        <a href="login.php" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm shadow transition">
                             <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk (Login)
                         </a>
                         <a href="register.php" class="bg-[#078B4F] hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl text-sm shadow transition border border-emerald-600">
@@ -86,7 +90,7 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                 </div>
             <?php } else { ?>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#mengaji" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
+                    <a href="#mengaji" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
                         <i class="fa-solid fa-child-reaching mr-2"></i> Jadwal Mengaji Anak
                     </a>
                     <a href="#malam-jumat" class="bg-[#05663a] hover:bg-emerald-800 text-white font-bold px-8 py-3.5 rounded-xl border border-emerald-500 shadow-lg transition">
@@ -98,8 +102,6 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
     </header>
 
     <?php if($is_logged_in) { ?>
-        <!-- KONTEN TERBUKA SEPENUHNYA DENGAN ANIMASI ELEGAN -->
-        
         <!-- Jadwal Azan 5 Waktu -->
         <section id="azan-section" data-aos="fade-up" class="py-12 bg-[#078B4F] text-white border-y border-emerald-700 text-center">
             <div class="max-w-7xl mx-auto px-4">
@@ -112,7 +114,7 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                     <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600" data-aos="zoom-in" data-aos-delay="400"><span class="block text-xs uppercase text-amber-300 font-bold">Maghrib</span><span class="text-2xl font-bold font-mono mt-1 block" id="maghrib">--:--</span></div>
                     <div class="bg-emerald-900/80 p-4 rounded-xl border border-emerald-600 col-span-2 md:col-span-1" data-aos="zoom-in" data-aos-delay="500"><span class="block text-xs uppercase text-amber-300 font-bold">Isya</span><span class="text-2xl font-bold font-mono mt-1 block" id="isya">--:--</span></div>
                 </div>
-                <button onclick="playAzanSound()" class="bg-amber-500 text-slate-900 px-4 py-2 rounded-xl text-xs font-bold hover:bg-amber-400 shadow">
+                <button onclick="playAzanSound()" class="bg-amber-500 text-slate-950 px-4 py-2 rounded-xl text-xs font-bold hover:bg-amber-400 shadow">
                     <i class="fa-solid fa-volume-high mr-1"></i> Test Suara Azan
                 </button>
             </div>
@@ -188,7 +190,7 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
             </div>
         </section>
 
-        <!-- Galeri Dinamis Skala Besar (Dengan Tahun & Keterangan) -->
+        <!-- Galeri Dinamis Skala Besar -->
         <section id="galeri" data-aos="fade-up" class="py-20 bg-slate-50 dark:bg-slate-800 text-center">
             <div class="max-w-7xl mx-auto px-4">
                 <span class="text-[#078B4F] font-bold uppercase tracking-wider text-sm">Dokumentasi Kenangan</span>
@@ -202,7 +204,7 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
                         <div class="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col justify-between" data-aos="zoom-in">
                             <div class="h-60 relative">
                                 <img src="img/<?= htmlspecialchars($g['nama_file']); ?>" alt="Galeri" class="w-full h-full object-cover">
-                                <span class="absolute top-3 right-3 bg-amber-500 text-slate-900 font-bold text-xs px-3 py-1 rounded-full shadow">Tahun <?= $g['tahun']; ?></span>
+                                <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full shadow">Tahun <?= $g['tahun']; ?></span>
                             </div>
                             <div class="p-6 text-left">
                                 <p class="text-sm text-slate-600 dark:text-slate-300 italic">"<?= htmlspecialchars($g['keterangan']); ?>"</p>
@@ -216,18 +218,16 @@ $galeri_query = $is_logged_in ? mysqli_query($conn, "SELECT * FROM galeri_majeli
         </section>
     <?php } ?>
 
-    <footer class="bg-emerald-950 text-white py-8 text-center text-xs">
+    <footer class="bg-emerald-950 dark:bg-slate-950 text-white py-8 text-center text-xs border-t border-emerald-900 dark:border-slate-800">
         &copy; 2026 Majelis Al Husein. All Rights Reserved.
     </footer>
 
-    <!-- Inisialisasi Animasi AOS (Muncul Elegan Saat Scroll) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
     </script>
     <script src="script.js"></script>
 </body>
